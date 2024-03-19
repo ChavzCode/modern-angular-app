@@ -1,0 +1,12 @@
+<div>
+  <figure class="relative">
+    <a href="">
+      <img class="rounded-lg" [src]="product.images[0]" [alt]="product.title" />
+    </a>
+    <app-add-remove-btn></app-add-remove-btn>
+  </figure>
+  <div>
+    <p>{{ product.title }}</p>
+    <h4>{{ product.price }}</h4>
+  </div>
+</div>
