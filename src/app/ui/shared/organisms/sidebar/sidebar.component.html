@@ -1,0 +1,24 @@
+@if (!sidebarHidden()) {
+<aside
+  class="py-10 border rounded-lg border-black fixed h-[calc(100vh-80px)] max-h-[calc(100vh-80px)] max-w-[400px] w-[25vw] right-0 z-10 top-20 bg-white"
+>
+  <div class="flex justify-between items-center px-10">
+    @if(sidebarContent() === 'detail'){
+    <h4 class="text-lg font-bold">Product Detail</h4>
+    } @else{
+    <h4 class="text-lg font-bold">Checkout</h4>
+    }
+    <ng-icon
+      class="text-xl cursor-pointer"
+      name="heroXMark"
+      (click)="closeSidebar()"
+    ></ng-icon>
+  </div>
+
+  @if (sidebarContent() === 'detail') {
+  <app-product-detail [product]="product()"></app-product-detail>
+  } @else{
+  <app-checkout [checkoutProducts]="shoppingCart()"></app-checkout>
+  }
+</aside>
+}
