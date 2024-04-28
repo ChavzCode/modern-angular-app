@@ -12,6 +12,10 @@ export class ShoppingCartService {
 
   constructor() {}
 
+  getCart() {
+    return this.shoppingCart.value;
+  }
+
   arrangeItem(item: Product): boolean {
     const inShoppingCart =
       this.shoppingCart.value.filter((a) => a.id === item.id).length > 0;
@@ -35,4 +39,5 @@ export class ShoppingCartService {
     const newCart = this.shoppingCart.value.filter((item) => item.id != itemId);
     this.shoppingCart.next(newCart);
   }
+
 }

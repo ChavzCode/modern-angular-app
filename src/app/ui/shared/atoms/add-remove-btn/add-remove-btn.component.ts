@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, EventEmitter, signal, Output, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroPlus, heroMinus } from '@ng-icons/heroicons/outline'
@@ -12,5 +12,10 @@ import { heroPlus, heroMinus } from '@ng-icons/heroicons/outline'
   styleUrl: './add-remove-btn.component.css'
 })
 export class AddRemoveBtnComponent {
-  addedToShoppingCar = signal<Boolean>(false);
+  @Input() status: Boolean = false;
+  @Output() clicked = new EventEmitter<boolean>()
+
+  onClickBtn(){
+    this.clicked.next(true);
+  }
 }

@@ -1,9 +1,17 @@
 <div>
   <figure class="relative">
-    <a href="">
-      <img class="rounded-lg" [src]="product.images[0]" [alt]="product.title" />
+    <a (click)="selectProduct(product)">
+      <img
+        class="rounded-lg"
+        [src]="product.images[0]"
+        (error)="loadAltImg()"
+        [alt]="product.title"
+      />
     </a>
-    <app-add-remove-btn></app-add-remove-btn>
+    <app-add-remove-btn
+      [status]="isProductInCart()"
+      (clicked)="onAddRemoveProduct(product)"
+    ></app-add-remove-btn>
   </figure>
   <div>
     <p>{{ product.title }}</p>

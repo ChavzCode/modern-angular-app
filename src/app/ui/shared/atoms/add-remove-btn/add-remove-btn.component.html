@@ -1,9 +1,9 @@
-<div class="absolute top-3 right-3">
+<div (click)="onClickBtn()" class="absolute top-3 right-3">
   <div
-    [ngClass]="addedToShoppingCar() ? 'bg-sky-950' : 'bg-white'"
+    [ngClass]="status ? 'bg-slate-950' : 'bg-white'"
     class="cursor-pointer flex justify-center items-center rounded-2xl w-5 h-5"
   >
-    @if (addedToShoppingCar()){
+    @if (status){
     <ng-icon class="text-white text-xl" name="heroMinus"></ng-icon>
     } @else {
     <ng-icon name="heroPlus"></ng-icon>
