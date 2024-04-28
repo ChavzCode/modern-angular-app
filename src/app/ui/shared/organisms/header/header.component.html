@@ -1,0 +1,27 @@
+<header class="fixed bg-white min-h-20 w-screen mx-auto z-10">
+  <div class="flex items-center justify-center">
+    <div class="flex items-center justify-between w-full py-5 max-w-[90%]">
+      <nav class="flex items-center gap-3 text-lg font-light">
+        <h2
+          routerLink="/home"
+          class="cursor-pointer text-3xl font-black tracking-tight mr-3"
+        >
+          ShopIt
+        </h2>
+        @for (category of categories(); track $index) {
+        <a [routerLink]="'category/' + category.id"> {{ category.name }}</a>
+        }
+      </nav>
+      <nav class="flex items-center gap-3 text-l">
+        <p>{{ "user@mail.com" }}</p>
+        <a routerLink="">My Orders</a>
+        <a href="">My Account</a>
+        <a href="">Sign Out</a>
+        <div class="flex cursor-pointer relative" (click)="openSidebar()">
+          <ng-icon class="text-xl" name="heroShoppingBag"></ng-icon>
+          <p>{{ productsNumber() }}</p>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -10,11 +10,15 @@ import { Product } from "../models/product/product";
 export class ProductUseCase {
   constructor(private _productGateway: ProductGateway){}
 
+  getById(id: string): Observable<Product>{
+    return this._productGateway.getByID(id);
+  }
+
   getAllProducts(): Observable<Array<Product>>{
     return this._productGateway.getAll();
   }
 
-  getAlbumById(id: string): Observable<Product>{
-    return this._productGateway.getByID(id);
+  getByCategory(id: string): Observable<Array<Product>>{
+    return this._productGateway.getByCategory(id);
   }
 }

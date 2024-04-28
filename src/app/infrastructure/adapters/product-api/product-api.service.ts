@@ -20,4 +20,8 @@ export class ProductApiService extends ProductGateway {
   getAll(): Observable<Product[]> {
     return this.http.get<Array<Product>>(this.url);
   }
+
+  getByCategory(id: string): Observable<Product[]>{
+    return this.http.get<Array<Product>>(`${this.url}?categoryId=${id}`);
+  }
 }

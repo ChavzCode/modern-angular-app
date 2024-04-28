@@ -1,6 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
 
-
 import { ProductUseCase } from '../../../domain/usecases/product.usecase';
 import { Product } from '../../../domain/models/product/product';
 import { ProductsComponent } from '../../shared/organisms/products/products.component';
@@ -20,7 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._productUseCase.getAllProducts().subscribe({
       next: (res) => {
-        this.products.set(res)
+        this.products.set(res);
       },
     });
   }
