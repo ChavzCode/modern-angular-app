@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 import { Product } from '../../../../domain/models/product/product';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
@@ -9,7 +10,7 @@ import { initProduct } from '../../../core/constants/product.constants';
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [AddRemoveBtnComponent],
+  imports: [AddRemoveBtnComponent, CurrencyPipe],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
 })

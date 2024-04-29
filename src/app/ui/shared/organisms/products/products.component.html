@@ -1,5 +1,7 @@
-<div class="grid grid-cols-4 gap-4">
-  @for (product of products; track $index) {
-  <app-product-card [product]="product"></app-product-card>
-  }
+<div class="flex justify-center items-center">
+  <div class="grid grid-cols-4 gap-10 max-w-[90%]">
+    @for (product of products; track $index) {
+    <app-product-card [product]="product"></app-product-card>
+    }
+  </div>
 </div>
