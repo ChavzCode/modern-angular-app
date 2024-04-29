@@ -18,7 +18,10 @@
   @if (sidebarContent() === 'detail') {
   <app-product-detail [product]="product()"></app-product-detail>
   } @else{
-  <app-checkout [checkoutProducts]="shoppingCart()"></app-checkout>
+  <app-checkout
+    (checkout)="onCheckout()"
+    [checkoutProducts]="shoppingCart()"
+  ></app-checkout>
   }
 </aside>
 }

@@ -1,0 +1,9 @@
+<div class="flex justify-center max-h-[calc(100vh-80px)] h-[calc(100vh-80px)]">
+  <div class="w-[600px]">
+    <app-checkout
+      (checkout)="radicateOrder()"
+      [checkoutProducts]="checkoutProducts()"
+      [stringTrimLenght]="40"
+    ></app-checkout>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, skip, switchMap, tap } from 'rxjs';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroXMark } from '@ng-icons/heroicons/outline';
@@ -27,7 +28,8 @@ export class SidebarComponent {
 
   constructor(
     private sidebarService: SidebarService,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -58,6 +60,13 @@ export class SidebarComponent {
           : this.shoppingCartService.shoppingCart$;
       })
     );
+  }
+
+  onCheckout() {
+    if (this.shoppingCart().length >= 1) {
+      this.closeSidebar();
+      this.router.navigate(['/checkout']);
+    }
   }
 
   closeSidebar() {

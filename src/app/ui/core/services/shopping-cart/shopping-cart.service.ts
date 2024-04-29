@@ -40,4 +40,7 @@ export class ShoppingCartService {
     this.shoppingCart.next(newCart);
   }
 
+  emptyCar() {
+    this.shoppingCart.next([]);
+  }
 }
