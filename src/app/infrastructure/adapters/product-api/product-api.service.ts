@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ProductGateway } from '../../../domain/models/product/gateway/product.gateway';
 import { Product } from '../../../domain/models/product/product';
+import { ProductGateway } from '../../../domain/models/product/gateway/product.gateway';
+import { enviroment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductApiService extends ProductGateway {
-  private url = 'https://api.escuelajs.co/api/v1/products'
+  private url = enviroment.API_URL + '/products';
 
   constructor(private http: HttpClient) {super();}
 
