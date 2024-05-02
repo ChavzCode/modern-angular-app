@@ -26,23 +26,20 @@ export class CheckoutPageComponent {
 
   createOrder() {
     //Must be replaced with API CALL
-    const orders = window.sessionStorage.getItem('orders') ?? '';
-
-    if (JSON.parse(orders).length > 0) {
-      const newOrders = JSON.parse(orders);
-      newOrders.push(this.checkoutProducts());
-      window.sessionStorage.setItem('orders', JSON.stringify(newOrders));
-    } else {
-      window.sessionStorage.setItem(
-        'orders',
-        JSON.stringify([this.checkoutProducts()])
-      );
-    }
+    const rawOrders = window.sessionStorage.getItem('orders') ?? '';
+    const parsedOrders = rawOrders != '' ? JSON.parse(rawOrders) :  [];
+    parsedOrders.push({
+      id: Math.floor(Math.random() * 9999),
+      products: this.checkoutProducts(),
+      date: new Date(),
+      userId: 'user1'
+    });
+    window.sessionStorage.setItem('orders', JSON.stringify(parsedOrders));
   }
 
   radicateOrder() {
     this.createOrder();
     this.shoppingCart.emptyCar();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/orders']);
   }
 }

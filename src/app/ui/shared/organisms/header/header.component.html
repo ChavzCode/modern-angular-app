@@ -9,14 +9,18 @@
           ShopIt
         </h2>
         @for (category of categories(); track $index) {
-        <a [routerLink]="'category/' + category.id"> {{ category.name }}</a>
+        <a class="hover:underline" [routerLink]="'category/' + category.id">
+          {{ category.name }}</a
+        >
         }
       </nav>
       <nav class="flex items-center gap-3 text-l">
+        <a class="hover:underline" routerLink="/orders">My Orders</a>
+        @if (authOn) {
         <p>{{ "user@mail.com" }}</p>
-        <a routerLink="">My Orders</a>
         <a href="">My Account</a>
         <a href="">Sign Out</a>
+        }
         <div class="flex cursor-pointer relative" (click)="openSidebar()">
           <ng-icon class="text-xl" name="heroShoppingBag"></ng-icon>
           <p>{{ productsNumber() }}</p>

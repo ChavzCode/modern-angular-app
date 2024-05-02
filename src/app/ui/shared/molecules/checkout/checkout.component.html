@@ -1,11 +1,12 @@
 <div class="px-10 flex-1 h-[80%] overflow-y-auto">
-  @if (checkoutProducts.length > 0) { @for (item of checkoutProducts; track
-  $index) {
+  @for (item of checkoutProducts; track $index) {
   <div class="flex my-4 justify-between items-center">
     <figure class="w-100 h-100 max-w-16 max-h-16">
       <img class="rounded-lg" [src]="item.images[0]" alt="" />
     </figure>
-    <p class="text-s basis-2/5">{{ item.title | truncateWithEllipsis : stringTrimLenght }}</p>
+    <p class="text-s basis-2/5">
+      {{ item.title | truncateWithEllipsis : stringTrimLenght }}
+    </p>
     <span>{{ item.price | currency : "USD" }}</span>
     <ng-icon
       (click)="deleteProduct(item.id)"
@@ -13,7 +14,7 @@
       name="heroTrash"
     ></ng-icon>
   </div>
-  } } @else {
+  } @empty {
   <p class="py-2 font-light">No Products in yet...</p>
   }
 </div>
@@ -26,6 +27,6 @@
     (click)="onCheckout()"
     class="rounded-lg w-full p-4 bg-black text-white"
   >
-    Checkout
+    {{ buttonText }}
   </button>
 </div>

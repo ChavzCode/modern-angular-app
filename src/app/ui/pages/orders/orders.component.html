@@ -1,0 +1,20 @@
+<div class="flex justify-center max-h-[calc(100vh-80px)] h-[calc(100vh-80px)]">
+  <div class="w-[600px]">
+    @if (currentView() === 'orders') { @for (order of orders(); track $index) {
+    <app-order-detail
+      (onGoRight)="reviewOrder($index)"
+      [order]="order"
+    ></app-order-detail>
+    }@empty {
+    <p>No orders right now...</p>
+    <button router>Go make your first one 😎</button>
+    } }@else {
+    <app-checkout
+      (checkout)="goToOrders()"
+      [stringTrimLenght]="40"
+      [buttonText]="'Go back to orders'"
+      [checkoutProducts]="orderReview()"
+    ></app-checkout>
+    }
+  </div>
+</div>

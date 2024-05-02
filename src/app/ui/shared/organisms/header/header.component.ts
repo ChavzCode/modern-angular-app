@@ -7,6 +7,7 @@ import { CategoryUseCase } from '../../../../domain/usecases/category.usecase';
 import { Category } from '../../../../domain/models/category/category';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
 import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
+import { enviroment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ import { ShoppingCartService } from '../../../core/services/shopping-cart/shoppi
 export class HeaderComponent {
   categories = signal<Array<Category>>([]);
   productsNumber = signal<Number>(0);
+  authOn: boolean = enviroment.auth_on;
 
   constructor(
     private _categoryUseCase: CategoryUseCase,
