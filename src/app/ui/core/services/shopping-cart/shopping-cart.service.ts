@@ -30,8 +30,7 @@ export class ShoppingCartService {
   }
 
   addNewItem(item: Product) {
-    const newCart = this.shoppingCart.value;
-    newCart.push(item);
+    const newCart = [...this.shoppingCart.value, item]
     this.shoppingCart.next(newCart);
   }
 
