@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Category } from '../../../domain/models/category/category';
-import { CategoryGateway } from '../../../domain/models/category/gateway/category.gateway';
+import { Category } from '@domain/models/category/category';
+import { CategoryGateway } from '@domain/models/category/gateway/category.gateway';
 import { enviroment } from '../../../../environments/environment';
 
 @Injectable({
@@ -11,8 +11,9 @@ import { enviroment } from '../../../../environments/environment';
 })
 export class CategoryApiService extends CategoryGateway {
   private categoryURL = enviroment.API_URL + '/categories';
+  private http = inject(HttpClient)
 
-  constructor(private http: HttpClient) {super();}
+  constructor() {super();}
 
   getAll(): Observable<Array<Category>> {
     return this.http.get<Array<Category>>(this.categoryURL);
