@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject, computed } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { Product } from '../../../../domain/models/product/product';
@@ -17,10 +17,14 @@ import { initProduct } from '../../../core/constants/product.constants';
 export class ProductCardComponent {
   @Input() product: Product = initProduct;
 
-  constructor(
-    private sidebarService: SidebarService,
-    private shoppingCart: ShoppingCartService
-  ) {}
+  private sidebarService = inject(SidebarService);
+  private shoppingCart = inject(ShoppingCartService);
+
+  isProductInCart = computed<Boolean>(() => {
+    return this.shoppingCart
+      .shoppingCart()
+      .some((item) => item.id === this.product.id);
+  });
 
   selectProduct(selectedProduct: Product) {
     this.sidebarService.setCurrentView('detail');
@@ -28,16 +32,15 @@ export class ProductCardComponent {
   }
 
   onAddRemoveProduct(item: Product) {
+    if(this.isProductInCart()){
+      this.shoppingCart.deleteItem(item.id);
+    }else{
+      this.shoppingCart.addNewItem(item);
+    }
     this.sidebarService.setCurrentView('cart');
-    this.shoppingCart.arrangeItem(item);
   }
 
   loadAltImg() {
     this.product.images[0] = `https://placehold.co/1000?text=${this.product.title}`;
-  }
-
-  isProductInCart() {
-    const shoppingCart = this.shoppingCart.getCart();
-    return shoppingCart.some((item) => item.id === this.product.id);
   }
 }

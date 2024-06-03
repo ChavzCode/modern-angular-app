@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { Component, Input, Output, EventEmitter, signal, SimpleChanges } from '@angular/core';
+import { CurrencyPipe} from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroTrash } from '@ng-icons/heroicons/outline';
 
@@ -21,11 +21,16 @@ export class CheckoutComponent {
   @Input() stringTrimLenght: number = 20;
   @Input() buttonText: string = 'Checkout'
   @Output() checkout = new EventEmitter<boolean>(false);
+  total = signal<number>(0);
 
   constructor(private shoppingCart: ShoppingCartService) {}
 
-  getTotalPrice(): number {
-    return getTotalFromProducts(this.checkoutProducts);
+  ngOnChanges(changes: SimpleChanges){
+    const productsChanged = changes['checkoutProducts']
+
+    if(productsChanged){
+      this.total.set(getTotalFromProducts(this.checkoutProducts))
+    }
   }
 
   deleteProduct(itemId: number): void {

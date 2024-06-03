@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroShoppingBag } from '@ng-icons/heroicons/outline';
@@ -18,29 +18,18 @@ import { enviroment } from '../../../../../environments/environment';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  categories = signal<Array<Category>>([]);
-  productsNumber = signal<Number>(0);
-  authOn: boolean = enviroment.auth_on;
+  private _categoryUseCase = inject(CategoryUseCase);
+  private shoppingCart = inject(ShoppingCartService);
+  private sidebar = inject(SidebarService);
 
-  constructor(
-    private _categoryUseCase: CategoryUseCase,
-    private sidebar: SidebarService,
-    private shoppingCart: ShoppingCartService
-  ) {}
+  authOn: boolean = enviroment.auth_on;
+  categories = signal<Array<Category>>([]);
+  productsNumber = this.shoppingCart.shoppingCart;
 
   ngOnInit() {
     this._categoryUseCase.getAllCategories().subscribe({
       next: (res) => {
         this.categories.set(res.slice(0, 5));
-      },
-    });
-    this.itemCount();
-  }
-
-  itemCount() {
-    this.shoppingCart.shoppingCart$.subscribe({
-      next: (a) => {
-        this.productsNumber.set(a.length);
       },
     });
   }

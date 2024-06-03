@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from '../../../domain/models/product/product';
 import { ShoppingCartService } from '../../core/services/shopping-cart/shopping-cart.service';
 import { CheckoutComponent } from '../../shared/molecules/checkout/checkout.component';
 
@@ -13,16 +12,10 @@ import { CheckoutComponent } from '../../shared/molecules/checkout/checkout.comp
   styleUrl: './checkout-page.component.css',
 })
 export class CheckoutPageComponent {
-  checkoutProducts = signal<Product[]>([]);
+  private shoppingCart = inject(ShoppingCartService)
+  private router = inject(Router)
 
-  constructor(
-    private shoppingCart: ShoppingCartService,
-    private router: Router
-  ) {}
-
-  ngOnInit() {
-    this.checkoutProducts.set(this.shoppingCart.getCart());
-  }
+  checkoutProducts = this.shoppingCart.shoppingCart
 
   createOrder() {
     //Must be replaced with API CALL

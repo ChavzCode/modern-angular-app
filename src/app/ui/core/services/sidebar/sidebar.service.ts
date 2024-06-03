@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 import { Product } from '../../../../domain/models/product/product';
 import { initProduct } from '../../constants/product.constants';
@@ -8,18 +7,16 @@ import { initProduct } from '../../constants/product.constants';
   providedIn: 'root',
 })
 export class SidebarService {
-  private sidebarView = new BehaviorSubject<'detail' | 'cart'>('detail');
-  sidebarView$ = this.sidebarView.asObservable();
-  private sidebarProduct = new BehaviorSubject<Product>(initProduct);
-  sidebarProduct$ = this.sidebarProduct.asObservable();
-
-  constructor() {}
+  hidden = signal<Boolean>(true);
+  view = signal<'detail' | 'cart'>('detail');
+  productOnView = signal<Product>(initProduct);
 
   reviewProduct(product: Product) {
-    this.sidebarProduct.next(product);
+    this.productOnView.set(product);
   }
 
   setCurrentView(view: 'detail' | 'cart') {
-    this.sidebarView.next(view);
+    this.hidden.set(false);
+    this.view.set(view);
   }
 }

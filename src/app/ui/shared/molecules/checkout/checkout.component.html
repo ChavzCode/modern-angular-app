@@ -21,7 +21,7 @@
 <div class="px-10">
   <div class="flex my-2 justify-between items-center">
     <p>Total:</p>
-    <h5>{{ getTotalPrice() | currency : "USD" }}</h5>
+    <h5>{{total() | currency : "USD" }}</h5>
   </div>
   <button
     (click)="onCheckout()"

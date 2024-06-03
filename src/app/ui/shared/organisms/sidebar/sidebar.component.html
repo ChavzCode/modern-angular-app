@@ -16,11 +16,11 @@
   </div>
 
   @if (sidebarContent() === 'detail') {
-  <app-product-detail [product]="product()"></app-product-detail>
+  <app-product-detail [product]="productOnReview()"></app-product-detail>
   } @else{
   <app-checkout
     (checkout)="onCheckout()"
-    [checkoutProducts]="shoppingCart()"
+    [checkoutProducts]="productsOnCart()"
   ></app-checkout>
   }
 </aside>
