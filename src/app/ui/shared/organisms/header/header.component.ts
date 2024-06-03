@@ -1,5 +1,5 @@
 import { Component, signal, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroShoppingBag } from '@ng-icons/heroicons/outline';
 
@@ -12,7 +12,7 @@ import { enviroment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIconComponent, RouterLink],
+  imports: [NgIconComponent, RouterLink, RouterLinkActive],
   providers: [provideIcons({ heroShoppingBag })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

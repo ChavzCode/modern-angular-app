@@ -9,7 +9,11 @@
           ShopIt
         </h2>
         @for (category of categories(); track $index) {
-        <a class="hover:underline" [routerLink]="'category/' + category.id">
+        <a
+          class="hover:underline"
+          [routerLinkActive]="'underline'"
+          [routerLink]="'category/' + category.id"
+        >
           {{ category.name }}</a
         >
         }
