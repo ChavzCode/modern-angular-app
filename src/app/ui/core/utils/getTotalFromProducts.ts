@@ -1,4 +1,4 @@
-import { Product } from '../../../domain/models/product/product';
+import { Product } from '@domain/models/product/product';
 
 export const getTotalFromProducts = (items: Product[]) => {
   if (items.length > 0) {

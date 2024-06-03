@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-import { Product } from '../../../../domain/models/product/product';
+import { Product } from '@domain/models/product/product';
 import { initProduct } from '../../constants/product.constants';
 
 @Injectable({

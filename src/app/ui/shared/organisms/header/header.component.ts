@@ -3,8 +3,8 @@ import { RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroShoppingBag } from '@ng-icons/heroicons/outline';
 
-import { CategoryUseCase } from '../../../../domain/usecases/category.usecase';
-import { Category } from '../../../../domain/models/category/category';
+import { CategoryUseCase } from '@domain/usecases/category.usecase';
+import { Category } from '@domain/models/category/category';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
 import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { enviroment } from '../../../../../environments/environment';

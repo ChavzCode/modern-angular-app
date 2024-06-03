@@ -3,7 +3,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroChevronDoubleRight } from '@ng-icons/heroicons/outline';
 
-import { Order } from '../../../../domain/models/order/order';
+import { Order } from '@domain/models/order/order';
 import { getTotalFromProducts } from '../../../core/utils/getTotalFromProducts';
 
 @Component({

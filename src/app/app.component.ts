@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
-import { SidebarComponent } from './ui/shared/organisms/sidebar/sidebar.component';
-import { HeaderComponent } from './ui/shared/organisms/header/header.component';
+import { SidebarComponent } from '@shared/organisms/sidebar/sidebar.component';
+import { HeaderComponent } from '@shared/organisms/header/header.component';
 
 @Component({
   selector: 'app-root',

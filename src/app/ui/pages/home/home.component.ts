@@ -1,8 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 
-import { ProductUseCase } from '../../../domain/usecases/product.usecase';
-import { Product } from '../../../domain/models/product/product';
-import { ProductsComponent } from '../../shared/organisms/products/products.component';
+import { ProductUseCase } from '@domain/usecases/product.usecase';
+import { Product } from '@domain/models/product/product';
+import { ProductsComponent } from '@shared/organisms/products/products.component';
 
 @Component({
   selector: 'app-home',

@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 
-import { Order } from '../../../domain/models/order/order';
-import { OrderDetailComponent } from '../../shared/molecules/order-detail/order-detail.component';
-import { CheckoutComponent } from '../../shared/molecules/checkout/checkout.component';
-import { Product } from '../../../domain/models/product/product';
+import { Order } from '@domain/models/order/order';
+import { OrderDetailComponent } from '@shared/molecules/order-detail/order-detail.component';
+import { CheckoutComponent } from '@shared/molecules/checkout/checkout.component';
+import { Product } from '@domain/models/product/product';
 
 @Component({
   selector: 'app-orders',

@@ -1,4 +1,4 @@
-import { Product } from '../../../domain/models/product/product';
+import { Product } from '@domain/models/product/product';
 
 export const initProduct: Product = {
   id: 0,

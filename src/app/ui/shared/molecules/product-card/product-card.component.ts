@@ -1,7 +1,7 @@
 import { Component, Input, inject, computed } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
-import { Product } from '../../../../domain/models/product/product';
+import { Product } from '@domain/models/product/product';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
 import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { AddRemoveBtnComponent } from '../../atoms/add-remove-btn/add-remove-btn.component';

@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Product } from '../../../domain/models/product/product';
-import { ProductsComponent } from '../../shared/organisms/products/products.component';
-import { ProductUseCase } from '../../../domain/usecases/product.usecase';
+import { Product } from '@domain/models/product/product';
+import { ProductUseCase } from '@domain/usecases/product.usecase';
+import { ProductsComponent } from '@shared/organisms/products/products.component';
 import { switchMap } from 'rxjs';
 
 @Component({

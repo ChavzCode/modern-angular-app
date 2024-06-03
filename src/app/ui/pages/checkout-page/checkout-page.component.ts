@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ShoppingCartService } from '../../core/services/shopping-cart/shopping-cart.service';
-import { CheckoutComponent } from '../../shared/molecules/checkout/checkout.component';
+import { CheckoutComponent } from '@shared/molecules/checkout/checkout.component';
 
 @Component({
   selector: 'app-checkout-page',

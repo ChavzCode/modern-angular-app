@@ -3,7 +3,7 @@ import { CurrencyPipe} from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroTrash } from '@ng-icons/heroicons/outline';
 
-import { Product } from '../../../../domain/models/product/product';
+import { Product } from '@domain/models/product/product';
 import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { TruncateWithEllipsisPipe } from '../../../core/pipes/truncate-with-ellipsis.pipe';
 import { getTotalFromProducts } from '../../../core/utils/getTotalFromProducts';
