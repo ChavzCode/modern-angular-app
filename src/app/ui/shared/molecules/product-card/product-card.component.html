@@ -1,4 +1,5 @@
 <div>
+  @defer (on viewport; prefetch on idle ) {
   <figure class="relative">
     <a (click)="selectProduct(product)">
       <img
@@ -12,12 +13,20 @@
       [status]="isProductInCart()"
       (clicked)="onAddRemoveProduct(product)"
     ></app-add-remove-btn>
-    <div class="absolute bottom-0 py-1 px-3 font-semibold rounded-xl bg-white bg-opacity-75 m-3">
-      <p>{{product.category.name}}</p>
+    <div
+      class="absolute bottom-0 py-1 px-3 font-semibold rounded-xl bg-white bg-opacity-75 m-3"
+    >
+      <p>{{ product.category.name }}</p>
     </div>
   </figure>
   <div class="flex justify-between pt-2">
     <p>{{ product.title }}</p>
-    <h4 class="font-black">{{ product.price | currency: 'USD' }}</h4>
+    <h4 class="font-black">{{ product.price | currency : "USD" }}</h4>
   </div>
+
+  } @placeholder {
+  <div class="flex justify-center items-center">
+    <p>Loading...</p>
+  </div>
+  }
 </div>
