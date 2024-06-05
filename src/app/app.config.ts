@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { routes } from './app.routes';
@@ -10,7 +10,7 @@ import { CategoryApiService } from './infrastructure/adapters/category-api/categ
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(withFetch()),
     { provide: ProductGateway, useClass: ProductApiService },
     { provide: CategoryGateway, useClass: CategoryApiService }
