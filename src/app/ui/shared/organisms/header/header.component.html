@@ -1,4 +1,4 @@
-<header class="fixed bg-white min-h-20 w-screen mx-auto z-10">
+<header class="fixed bg-white min-h-20 w-screen mx-auto z-30">
   <div class="flex items-center justify-center">
     <div class="flex items-center justify-between w-full py-5 max-w-[90%]">
       <nav class="flex items-center gap-3 text-lg font-light">
@@ -10,7 +10,7 @@
         </h2>
         @for (category of categories(); track $index) {
         <a
-          class="hover:underline"
+          class="hidden md:block hover:underline"
           [routerLinkActive]="'underline'"
           [routerLink]="'category/' + category.id"
         >
@@ -29,7 +29,32 @@
           <ng-icon class="text-xl" name="heroShoppingBag"></ng-icon>
           <p>{{ productsNumber().length }}</p>
         </div>
+        <div class="md:hidden flex justify-center items-center">
+          <ng-icon
+            (click)="toggleNavigation()"
+            class="text-xl cursor-pointer"
+            name="heroBars3"
+          ></ng-icon>
+        </div>
       </nav>
     </div>
   </div>
 </header>
+
+<div
+  [@dropdown]="dropdown ? 'down' : 'up'"
+  [ngClass]="{ 'pointer-events-none': !dropdown }"
+  class="mt-[80px] w-full border-b-2 bg-white md:hidden fixed z-20"
+>
+  <nav (click)="toggleNavigation()" class="flex flex-col mx-auto max-w-[90%]">
+    @for (category of categories(); track $index) {
+    <a
+      class="hover:underline mb-4"
+      [routerLinkActive]="'underline'"
+      [routerLink]="'category/' + category.id"
+    >
+      {{ category.name }}</a
+    >
+    }
+  </nav>
+</div>

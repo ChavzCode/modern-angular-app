@@ -1,19 +1,22 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, HostListener } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { heroShoppingBag } from '@ng-icons/heroicons/outline';
+import { heroShoppingBag, heroBars3 } from '@ng-icons/heroicons/outline';
 
 import { CategoryUseCase } from '@domain/usecases/category.usecase';
 import { Category } from '@domain/models/category/category';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
 import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { enviroment } from '../../../../../environments/environment';
+import { dropdown } from '../../../core/animations/hideRight';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIconComponent, RouterLink, RouterLinkActive],
-  providers: [provideIcons({ heroShoppingBag })],
+  imports: [NgIconComponent, RouterLink, RouterLinkActive, NgClass],
+  providers: [provideIcons({ heroShoppingBag, heroBars3 })],
+  animations: [dropdown],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -25,6 +28,7 @@ export class HeaderComponent {
   authOn: boolean = enviroment.auth_on;
   categories = signal<Array<Category>>([]);
   productsNumber = this.shoppingCart.shoppingCart;
+  dropdown: boolean = false;
 
   ngOnInit() {
     this._categoryUseCase.getAllCategories().subscribe({
@@ -36,5 +40,9 @@ export class HeaderComponent {
 
   openSidebar() {
     this.sidebar.setCurrentView('cart');
+  }
+
+  toggleNavigation() {
+    this.dropdown = !this.dropdown;
   }
 }
