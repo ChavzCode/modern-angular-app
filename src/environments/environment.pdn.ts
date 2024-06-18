@@ -1,5 +1,5 @@
 export const enviroment = {
   production: true,
-  API_URL: 'https://api.escuelajs.co/api/v1/products',
-  auth_on: true,
+  API_URL: '#{API_URL}#',
+  auth_on: '#{AUTH_ON}',
 }
