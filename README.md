@@ -1,27 +1,107 @@
-# ShopIt
+# Angular App | Clean Architecture
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+Hey there!👋 This project is designed to showcase some of the best practices in building a modern Angular application. It leverages the latest Angular 17 features like signals and standalone components, follows Clean Architecture principles, and emphasizes a well-structured design system. Below is a comprehensive guide to understanding and running, this project.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Design System](#design-system)
+- [Atomic Design](#atomic-design)
 
-## Code scaffolding
+## Introduction
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This Angular App demonstrates the implementation of some of the best practices and cutting-edge technologies to build scalable and maintainable front-end app.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular 17**: Utilizing the latest features and improvements.
+- **Clean Architecture**: Ensuring a scalable and maintainable codebase.
+- **Tailwind CSS**: Implementing a modern utility-first CSS framework.
+- **Design Systems**: Consistent and reusable UI components.
+- **SOLID Principles**: Writing clean, understandable, and maintainable code.
+- **Good Commit Practices**: Following conventional commits for clear history.
+- **Atomic Design**: Structuring components for scalability and reusability.
 
-## Running unit tests
+## Getting Started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+- Node.js (>= 16.0.0)
+- Angular CLI (>= 17.0.0)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Installation
 
-## Further help
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/modern-angular-portfolio.git
+   cd modern-angular-portfolio
+   ```
+2. Install dependencies:
+   ```sh
+    npm install
+   ```
+3. Install dependencies:
+   ```sh
+    ng serve
+   ```
+4. Use mock server (optional)<br>
+    By default the app implements a public API. Despite the app having some controls to avoid unwanted responses from the API you may want to try the mock server.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```sh
+    npm run mock-server
+   ```
+   Note you will have to change the environment variable to redirect traffic to your localhost
+
+   ```js
+    export const enviroment = {
+      production: false,
+      API_URL: 'http://localhost:3000',  //Variable to change
+      auth_on: false,
+    }
+   ```
+
+
+## Project Structure
+   ```sh
+    .
+    ├── acceptancetest
+    ├── doc
+    ├── e2e
+    ├── mock-server
+    ├── reports
+    └── src
+        ├── app
+        │   ├── domain
+        │   │   ├── models
+        │   │   └── usecases
+        │   ├── infrastructure
+        │   │   ├── adapters
+        │   │   └── helpers
+        │   └── ui
+        │       ├── core
+        │       ├── pages
+        │       └── shared
+        ├── assets
+        └── environments
+   ```
+
+## Design System 
+The application uses a design system approach to ensure consistent and reusable UI components. We leverage Tailwind CSS for styling and maintain a component library.
+
+## Atomic Design
+Following the Atomic Design methodology, the application is structured into:
+
+- **Atoms:** Basic building blocks (e.g., buttons, inputs).
+- **Molecules:** Combinations of atoms (e.g., form fields).
+- **Organisms:** Complex components (e.g., navigation bars).
+- **Templates:** Page-level components with placeholders.
+- **Pages:** Specific views of the application.
+
+
+***
+<br>
+
+Thank you for checking out this app. If you have any questions or feedback, feel free to reach out!
