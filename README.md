@@ -36,8 +36,8 @@ This Angular App demonstrates the implementation of some of the best practices a
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/modern-angular-portfolio.git
-   cd modern-angular-portfolio
+   git clone https://github.com/your-username/modern-angular-app.git
+   cd modern-angular-app
    ```
 2. Install dependencies:
    ```sh
